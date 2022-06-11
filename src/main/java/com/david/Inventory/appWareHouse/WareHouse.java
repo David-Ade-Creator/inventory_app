@@ -17,9 +17,13 @@ public class WareHouse {
     private String name;
     private String registrationId;
     private String location;
-    @JsonIgnore
-    @ManyToMany(mappedBy = "wareHouses")
-    private Set<Inventory> inventories = new HashSet<>();
+    @ManyToMany
+    @JoinTable(
+            name = "inventory_collection",
+            joinColumns = @JoinColumn(name = "warehouse_id"),
+            inverseJoinColumns = @JoinColumn(name = "inventory_id")
+    )
+    Set<Inventory> inventory_collection = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -49,12 +53,12 @@ public class WareHouse {
         this.location = location;
     }
 
-    public Set<Inventory> getInventories() {
-        return inventories;
+    public Set<Inventory> getInventory_collection() {
+        return inventory_collection;
     }
 
-    public void setInventories(Set<Inventory> inventories) {
-        this.inventories = inventories;
+    public void setInventory_collection(Set<Inventory> inventory_collection) {
+        this.inventory_collection = inventory_collection;
     }
 
     @Override
@@ -64,7 +68,7 @@ public class WareHouse {
                 ", name='" + name + '\'' +
                 ", registrationId='" + registrationId + '\'' +
                 ", location='" + location + '\'' +
-                ", inventories=" + inventories +
+                ", inventory_collection=" + inventory_collection +
                 '}';
     }
 }

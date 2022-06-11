@@ -2,6 +2,7 @@ package com.david.Inventory.appInventory;
 
 
 import com.david.Inventory.appWareHouse.WareHouse;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -16,13 +17,9 @@ public class Inventory {
     private Integer quantity;
     private String description;
     private InventoryType type;
-    @ManyToMany
-    @JoinTable(
-            name = "warehouse_allocated",
-            joinColumns = @JoinColumn(name = "inventory_id"),
-            inverseJoinColumns = @JoinColumn(name = "warehouse_id")
-    )
-    Set<WareHouse> wareHouses = new HashSet<>();
+    @JsonIgnore
+    @ManyToMany(mappedBy = "inventory_collection")
+    private Set<WareHouse> warehouses = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -60,12 +57,12 @@ public class Inventory {
         this.type = type;
     }
 
-    public Set<WareHouse> getWareHouses() {
-        return wareHouses;
+    public Set<WareHouse> getWarehouses() {
+        return warehouses;
     }
 
-    public void setWareHouses(Set<WareHouse> wareHouses) {
-        this.wareHouses = wareHouses;
+    public void setWarehouses(Set<WareHouse> warehouses) {
+        this.warehouses = warehouses;
     }
 
     @Override
@@ -76,7 +73,7 @@ public class Inventory {
                 ", quantity=" + quantity +
                 ", description='" + description + '\'' +
                 ", type=" + type +
-                ", wareHouses=" + wareHouses +
+                ", warehouses=" + warehouses +
                 '}';
     }
 }
