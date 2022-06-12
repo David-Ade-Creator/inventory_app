@@ -27,8 +27,7 @@ public class WarehouseService {
 
     @Transactional
     public WareHouse editWarehouse(Long id, WareHouse wareHouse){
-        WareHouse updateWarehouse = warehouseRepository.findById(id)
-                .orElseThrow(()-> new IllegalStateException("warehouse with id " + id + " does not exist"));
+        WareHouse updateWarehouse = warehouseRepository.findById(id).get();
         updateWarehouse.setName(wareHouse.getName());
         updateWarehouse.setLocation(wareHouse.getLocation());
         updateWarehouse.setRegistrationId(wareHouse.getRegistrationId());

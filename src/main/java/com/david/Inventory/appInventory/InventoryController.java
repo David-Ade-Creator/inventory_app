@@ -10,16 +10,26 @@ import java.util.List;
 @RequestMapping("/api/inventory")
 public class InventoryController {
     @Autowired
-    private InventoryRepository inventoryRepository;
+    private InventoryService inventoryService;
 
     @GetMapping
     List<Inventory> getInventories() {
-        return inventoryRepository.findAll();
+        return inventoryService.inventoryList();
     }
 
 
     @PostMapping
     Inventory createInventory(@RequestBody Inventory inventory) {
-        return inventoryRepository.save(inventory);
+        return inventoryService.saveInventory(inventory);
+    }
+
+    @PutMapping
+    Inventory updateInventory(@RequestBody Inventory inventory){
+        return inventoryService.editInventory(inventory);
+    }
+
+    @DeleteMapping("{inventoryId}")
+    Inventory deleteInventory(@PathVariable Long inventoryId){
+        return inventoryService.deleteInventory(inventoryId);
     }
 }
