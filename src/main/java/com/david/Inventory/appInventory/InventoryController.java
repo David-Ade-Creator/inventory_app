@@ -4,6 +4,7 @@ import com.david.Inventory.appWareHouse.WareHouse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,12 +20,12 @@ public class InventoryController {
 
 
     @PostMapping
-    Inventory createInventory(@RequestBody Inventory inventory) {
+    Inventory createInventory(@Valid @RequestBody Inventory inventory) {
         return inventoryService.saveInventory(inventory);
     }
 
     @PutMapping
-    Inventory updateInventory(@RequestBody Inventory inventory){
+    Inventory updateInventory(@Valid @RequestBody Inventory inventory){
         return inventoryService.editInventory(inventory);
     }
 
