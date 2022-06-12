@@ -15,6 +15,7 @@ public class WareHouse {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     private String name;
+    @Column(unique=true)
     private String registrationId;
     private String location;
     @ManyToMany

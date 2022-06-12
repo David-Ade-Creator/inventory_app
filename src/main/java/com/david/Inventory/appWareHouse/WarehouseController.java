@@ -3,6 +3,7 @@ package com.david.Inventory.appWareHouse;
 import com.david.Inventory.appInventory.Inventory;
 import com.david.Inventory.appInventory.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class WarehouseController {
 
 
     @PostMapping
-    WareHouse createWarehouse(@RequestBody WareHouse wareHouse) {
+    ResponseEntity createWarehouse(@RequestBody WareHouse wareHouse) {
         return warehouseService.createWarehouse(wareHouse);
     }
 

@@ -2,6 +2,7 @@ package com.david.Inventory.appInventory;
 
 import com.david.Inventory.appWareHouse.WareHouse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -18,15 +19,14 @@ public class InventoryController {
         return inventoryService.inventoryList();
     }
 
-
     @PostMapping
-    Inventory createInventory(@Valid @RequestBody Inventory inventory) {
+    ResponseEntity createInventory(@Valid @RequestBody Inventory inventory) {
         return inventoryService.saveInventory(inventory);
     }
 
-    @PutMapping
-    Inventory updateInventory(@Valid @RequestBody Inventory inventory){
-        return inventoryService.editInventory(inventory);
+    @PutMapping("{inventoryId}")
+    Inventory updateInventory(@Valid @PathVariable Long inventoryId, @RequestBody Inventory inventory){
+        return inventoryService.editInventory(inventoryId, inventory);
     }
 
     @DeleteMapping("{inventoryId}")
