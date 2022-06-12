@@ -24,8 +24,7 @@ cd projectname
 
 ## Endpoints available in application
 
-Test application from localhost address after running on machine or test application on replit using this link 
-[Run from replit]("https://replit.com/@DavidAdeCreator/inventoryapis#Inventory/src/main/java/com/david/Inventory/InventoryApplication.java)
+Test application from localhost address after running on local machine or test application on replit using this link [Run from replit]("https://replit.com/@DavidAdeCreator/inventoryapis#Inventory/src/main/java/com/david/Inventory/InventoryApplication.java)
 
 
 Inventory Entity
