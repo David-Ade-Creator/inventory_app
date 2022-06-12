@@ -1,11 +1,11 @@
 package com.david.Inventory.appWareHouse;
 
-import com.david.Inventory.appInventory.Inventory;
 import com.david.Inventory.appInventory.InventoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -13,10 +13,7 @@ import java.util.List;
 public class WarehouseController {
 
     @Autowired
-    WarehouseService warehouseService;
-
-    @Autowired
-    InventoryRepository inventoryRepository;
+    private WarehouseService warehouseService;
 
     @GetMapping
     List<WareHouse> getWarehouses() {
@@ -25,12 +22,12 @@ public class WarehouseController {
 
 
     @PostMapping
-    ResponseEntity createWarehouse(@RequestBody WareHouse wareHouse) {
+    ResponseEntity createWarehouse(@Valid @RequestBody WareHouse wareHouse) {
         return warehouseService.createWarehouse(wareHouse);
     }
 
     @PutMapping("/{warehouseId}")
-    WareHouse editWarehouse(@RequestBody WareHouse wareHouse, @PathVariable Long warehouseId){
+    WareHouse editWarehouse(@Valid @RequestBody WareHouse wareHouse, @PathVariable Long warehouseId){
         return warehouseService.editWarehouse(warehouseId, wareHouse);
     }
 

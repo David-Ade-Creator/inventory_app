@@ -16,14 +16,18 @@ public class Inventory {
     Long id;
     @NotEmpty(message = "Name cannot be empty")
     @Size(min = 2, max = 32, message = "Name must be between 2 and 32 characters long")
+    @Column(name="inventory_name", length = 32,nullable = false, unique = true)
     private String name;
     @Min(0)
     @Max(50)
+    @Column(name="inventory_qty", nullable = false)
     private Integer quantity;
     @NotEmpty(message = "Description cannot be empty")
     @Size(min = 5, max = 64, message = "Description must be between 5 and 64 characters long")
+    @Column(name="inventory_desc", length = 64,nullable = false)
     private String description;
     @NotNull(message = "Type cannot be empty")
+    @Enumerated(EnumType.STRING)
     private InventoryType type;
     @JsonIgnore
     @ManyToMany(mappedBy = "inventory_collection")
