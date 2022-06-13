@@ -1,6 +1,6 @@
 # Rest Api For Inventory Application
 
-This is an application that provides end points to perform the following operations
+This is an application that provides end points to create inventory items, modify them and also add them to specific warehouse/location.
 
 ## Running the application locally
 
@@ -12,15 +12,9 @@ Alternatively you can use the [Spring Boot Maven plugin](https://docs.spring.io/
 mvn spring-boot:run
 ```
 
-## Deploying the application to Replit
+## Run the application on Replit
 
-Download the zip folder from GitHub and unzip files, open Replit and select Java, drag and drop or upload project folder to your replit workspace.
-To run application, open shell on replit and cd to your project and run application
-
-```shell
-cd projectname
-./mvnw spring-boot:run
-```
+To run application, open replit link [Run from replit](https://replit.com/@DavidAdeCreator/inventoryapis#Inventory/src/main/java/com/david/Inventory/InventoryApplication.java) and click on run
 
 ## Endpoints available in application
 
