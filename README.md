@@ -20,6 +20,7 @@ To run application, open replit link [Run from replit](https://replit.com/@David
 
 Test application from localhost address after running on local machine or test application on replit using this link [Run from replit](https://replit.com/@DavidAdeCreator/inventoryapis#Inventory/src/main/java/com/david/Inventory/InventoryApplication.java)
 
+Content-Type  - application/json
 
 Inventory Entity
 1. name (String , required field)
