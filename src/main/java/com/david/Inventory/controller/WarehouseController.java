@@ -1,6 +1,7 @@
-package com.david.Inventory.appWareHouse;
+package com.david.Inventory.controller;
 
-import com.david.Inventory.appInventory.InventoryRepository;
+import com.david.Inventory.service.WarehouseService;
+import com.david.Inventory.model.WareHouse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,23 +17,23 @@ public class WarehouseController {
     private WarehouseService warehouseService;
 
     @GetMapping
-    List<WareHouse> getWarehouses() {
+    ResponseEntity<List<WareHouse>> getWarehouses() {
+
         return warehouseService.getWarehouseList();
     }
 
-
     @PostMapping
-    ResponseEntity createWarehouse(@Valid @RequestBody WareHouse wareHouse) {
+    ResponseEntity<WareHouse> createWarehouse(@Valid @RequestBody WareHouse wareHouse) {
         return warehouseService.createWarehouse(wareHouse);
     }
 
     @PutMapping("/{warehouseId}")
-    WareHouse editWarehouse(@Valid @RequestBody WareHouse wareHouse, @PathVariable Long warehouseId){
+    ResponseEntity<WareHouse> editWarehouse(@Valid @RequestBody WareHouse wareHouse, @PathVariable Long warehouseId){
         return warehouseService.editWarehouse(warehouseId, wareHouse);
     }
 
     @PutMapping("/{warehouseId}/inventory/{inventoryId}")
-    WareHouse addInventoryToWarehouse(
+    ResponseEntity<WareHouse> addInventoryToWarehouse(
             @PathVariable Long warehouseId,
             @PathVariable Long inventoryId
     ) {

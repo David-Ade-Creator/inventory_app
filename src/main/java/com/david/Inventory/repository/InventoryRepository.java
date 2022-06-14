@@ -1,6 +1,6 @@
-package com.david.Inventory.appInventory;
+package com.david.Inventory.repository;
 
-import com.david.Inventory.appWareHouse.WareHouse;
+import com.david.Inventory.model.Inventory;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface InventoryRepository extends JpaRepository<Inventory, Long> {

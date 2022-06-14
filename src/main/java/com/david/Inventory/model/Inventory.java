@@ -1,7 +1,6 @@
-package com.david.Inventory.appInventory;
+package com.david.Inventory.model;
 
 
-import com.david.Inventory.appWareHouse.WareHouse;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;

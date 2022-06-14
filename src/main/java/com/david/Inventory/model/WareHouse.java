@@ -1,6 +1,4 @@
-package com.david.Inventory.appWareHouse;
-
-import com.david.Inventory.appInventory.Inventory;
+package com.david.Inventory.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;

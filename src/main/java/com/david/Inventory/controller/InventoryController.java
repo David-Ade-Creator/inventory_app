@@ -1,7 +1,9 @@
-package com.david.Inventory.appInventory;
+package com.david.Inventory.controller;
 
-import com.david.Inventory.appWareHouse.WareHouse;
+import com.david.Inventory.service.InventoryService;
+import com.david.Inventory.model.Inventory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,22 +17,22 @@ public class InventoryController {
     private InventoryService inventoryService;
 
     @GetMapping
-    List<Inventory> getInventories() {
+    ResponseEntity<List<Inventory>> getInventories() {
         return inventoryService.inventoryList();
     }
 
     @PostMapping
-    ResponseEntity createInventory(@Valid @RequestBody Inventory inventory) {
+    ResponseEntity<Inventory> createInventory(@Valid @RequestBody Inventory inventory) {
         return inventoryService.saveInventory(inventory);
     }
 
     @PutMapping("{inventoryId}")
-    Inventory updateInventory(@Valid @PathVariable Long inventoryId, @RequestBody Inventory inventory){
+    ResponseEntity<Inventory> updateInventory(@Valid @PathVariable Long inventoryId, @RequestBody Inventory inventory){
         return inventoryService.editInventory(inventoryId, inventory);
     }
 
     @DeleteMapping("{inventoryId}")
-    Inventory deleteInventory(@PathVariable Long inventoryId){
+    ResponseEntity<HttpStatus> deleteInventory(@PathVariable Long inventoryId){
         return inventoryService.deleteInventory(inventoryId);
     }
 }

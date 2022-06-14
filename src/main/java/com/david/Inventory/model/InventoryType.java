@@ -1,4 +1,4 @@
-package com.david.Inventory.appInventory;
+package com.david.Inventory.model;
 
 public enum InventoryType {
         WORK_IN_PROCESS,
